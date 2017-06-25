@@ -16,8 +16,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void didTapButton(View view) {
-        Button button = (Button)findViewById(R.id.button);
+        Button button = (Button) view;
         final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce);
+
+        // Use bounce interpolator with amplitude 0.2 and frequency 20
+        MyBounceInterpolator interpolator = new MyBounceInterpolator(0.2, 20);
+        myAnim.setInterpolator(interpolator);
+
         button.startAnimation(myAnim);
     }
 }
